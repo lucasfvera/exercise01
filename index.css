@@ -1,0 +1,257 @@
+:root {
+	--palette-color-1: hsl(300, 43%, 22%);
+	--palette-color-2: hsl(333, 80%, 67%);
+	--palette-color-3: hsl(303, 10%, 53%);
+	--palette-color-4: hsl(300, 24%, 96%);
+	--palette-color-5: whitesmoke;
+	--primary-font: 'Spartan', sans-serif;
+	--font-size-10pt: 10pt;
+	--font-weight-regular: 400;
+	--font-weight-normal: 500;
+	--font-weight-bold: 700;
+}
+
+html {
+	font-size: var(--font-size-10pt);
+	margin: 0;
+	overflow: hidden;
+}
+
+body {
+	font-family: var(--primary-font);
+	line-height: 1.5;
+	background-image: url('./images/bg-pattern-top-desktop.svg'),
+		url('./images/bg-pattern-bottom-desktop.svg');
+	background-position: left top, right bottom;
+	background-repeat: no-repeat;
+	height: 100vh;
+	margin: 30px 0 0 0;
+	box-sizing: border-box;
+}
+
+/* Grid classes */
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	grid-template-areas:
+		'header star'
+		'profile profile'
+		'footer footer';
+	row-gap: 20px;
+	height: 100%;
+}
+.grid-item-heroheader {
+	margin: 0 50px;
+	grid-area: header;
+	padding: 0 40% 0 0;
+}
+.grid-item-ratcard {
+	grid-area: star;
+	margin: 0 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+}
+.grid-item-profcard {
+	grid-area: profile;
+	align-self: center;
+	margin: 0 50px;
+}
+.grid-item-footer {
+	grid-area: footer;
+	margin: 0 50px;
+}
+
+/* Titulo ppal y subtitulo */
+.heroheader {
+	font-size: 2.4rem;
+	font-weight: var(--font-weight-bold);
+	color: var(--palette-color-1);
+}
+.herosubheader {
+	font-size: 1rem;
+	font-weight: var(--font-weight-regular);
+	color: var(--palette-color-1);
+}
+
+/* Tarjetas de ratings */
+.card-rating {
+	background-color: var(--palette-color-4);
+	padding: 1rem;
+	width: 100%;
+	max-width: 500px;
+	position: relative;
+	border-radius: 0.2rem;
+	margin: 1rem 0;
+}
+.stars {
+	display: inline-block;
+}
+.card-rating-img {
+	vertical-align: middle;
+}
+
+#card1 {
+	right: 6rem;
+}
+#card2 {
+	right: 4rem;
+}
+#card3 {
+	right: 2rem;
+}
+
+.card-rating-text {
+	font-size: 0.8rem;
+	font-weight: var(--font-weight-bold);
+	color: var(--palette-color-1);
+	margin: 0 1rem;
+	white-space: nowrap;
+}
+
+/* Tarjeta de profile */
+.card-profile-container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.card-profile {
+	padding: 2rem;
+	background-color: var(--palette-color-1);
+	border-radius: 0.4rem;
+	width: 25%;
+	max-width: 400px;
+	min-width: 250px;
+	height: 12rem;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	align-content: center;
+	position: relative;
+}
+/* .card-profile-header{
+    } */
+.card-profile-image {
+	border-radius: 50%;
+	height: 2rem;
+	width: 2rem;
+}
+.card-profile-title {
+	display: inline-block;
+	font-size: 0.8rem;
+	color: var(--palette-color-5);
+	font-weight: var(--font-weight-bold);
+}
+.card-profile-subtitle {
+	display: block;
+	font-size: 0.8rem;
+	color: var(--palette-color-2);
+	font-weight: var(--font-weight-regular);
+}
+.card-profile-text {
+	/* align-self: center; */
+	margin: 0;
+	font-size: 0.8rem;
+	color: var(--palette-color-5);
+	font-weight: var(--font-weight-regular);
+}
+#prof2 {
+	top: 1rem;
+}
+#prof3 {
+	top: 2rem;
+}
+
+/* Footer */
+.page-footer {
+	text-align: center;
+	font-size: 0.9rem;
+}
+.link-footer {
+	text-decoration: none;
+	background-color: var(--palette-color-4);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	color: var(--palette-color-1);
+}
+.link-footer:hover {
+	background-color: var(--palette-color-1);
+	color: var(--palette-color-5);
+	transition: background-color 0.1s, color 0.1s;
+}
+
+/* Media Queries */
+
+@media (max-width: 800px) {
+	html {
+		overflow: scroll;
+	}
+	body {
+		background-image: url('./images/bg-pattern-top-mobile.svg'),
+			url('./images/bg-pattern-bottom-mobile.svg');
+		height: 100%;
+	}
+	.grid-container {
+		grid-template-areas:
+			'header'
+			'star'
+			'profile'
+			'footer';
+		row-gap: 50px;
+	}
+	.grid-item-heroheader {
+		text-align: center;
+		padding: 0;
+	}
+	.grid-item-profcard {
+		align-content: center;
+	}
+	.grid-item-ratcard {
+		align-items: center;
+		justify-content: center;
+	}
+
+	#card1 {
+		right: 0;
+	}
+	#card2 {
+		right: 0;
+	}
+	#card3 {
+		right: 0;
+	}
+	.card-rating-text {
+		display: block;
+		text-align: center;
+	}
+	.card-rating-img {
+		display: inline-block;
+	}
+
+	.card-profile-container {
+		align-content: center;
+		flex-direction: column;
+	}
+	.herosubheader {
+		font-size: 1.2rem;
+	}
+	.card-profile-text {
+		font-size: 1rem;
+	}
+	.card-profile {
+		width: 100%;
+	}
+	.card-rating {
+		padding-top: 0;
+		padding-bottom: 0;
+		min-width: 100px;
+	}
+	.card-rating-text {
+		padding: 0.5rem 0;
+	}
+	.stars {
+		padding: 0.5rem 0;
+		display: block;
+		text-align: center;
+	}
+}
