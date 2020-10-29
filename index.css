@@ -14,7 +14,7 @@
 html {
 	font-size: var(--font-size-10pt);
 	margin: 0;
-	overflow: hidden;
+	min-height: 100vh;
 }
 
 body {
@@ -24,53 +24,54 @@ body {
 		url('./images/bg-pattern-bottom-desktop.svg');
 	background-position: left top, right bottom;
 	background-repeat: no-repeat;
-	height: 100vh;
+	min-height: 100%;
 	margin: 30px 0 0 0;
 	box-sizing: border-box;
 }
 
-/* Grid classes */
+/* Grid classes general */
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(2, minmax(100px, 1fr));
 	grid-template-areas:
 		'header star'
 		'profile profile'
 		'footer footer';
 	row-gap: 20px;
-	height: 100%;
+	margin: 0 10vw;
+	min-height: 95vh;
 }
 .grid-item-heroheader {
-	margin: 0 50px;
+	margin: 0 5vw;
 	grid-area: header;
-	padding: 0 40% 0 0;
 }
 .grid-item-ratcard {
 	grid-area: star;
-	margin: 0 50px;
+	margin: 0 5vw;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-content: flex-end;
 	justify-content: center;
 }
 .grid-item-profcard {
 	grid-area: profile;
 	align-self: center;
-	margin: 0 50px;
+	margin: 0 5vw;
 }
 .grid-item-footer {
 	grid-area: footer;
-	margin: 0 50px;
+	align-self: center;
+	margin: 0 5vw;
 }
 
 /* Titulo ppal y subtitulo */
 .heroheader {
-	font-size: 2.4rem;
+	font-size: 3rem;
 	font-weight: var(--font-weight-bold);
 	color: var(--palette-color-1);
 }
 .herosubheader {
-	font-size: 1rem;
+	font-size: 1.3rem;
 	font-weight: var(--font-weight-regular);
 	color: var(--palette-color-1);
 }
@@ -111,18 +112,23 @@ body {
 }
 
 /* Tarjeta de profile */
+
 .card-profile-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	justify-items: center;
+	/* 
 	display: flex;
 	justify-content: space-between;
-	flex-wrap: wrap;
+	flex-wrap: wrap; */
 }
 .card-profile {
 	padding: 2rem;
 	background-color: var(--palette-color-1);
 	border-radius: 0.4rem;
-	width: 25%;
+	width: 75%;
 	max-width: 400px;
-	min-width: 250px;
+	min-width: 200px;
 	height: 12rem;
 	display: grid;
 	grid-template-rows: auto 1fr;
@@ -151,7 +157,7 @@ body {
 .card-profile-text {
 	/* align-self: center; */
 	margin: 0;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	color: var(--palette-color-5);
 	font-weight: var(--font-weight-regular);
 }
@@ -192,6 +198,7 @@ body {
 		height: 100%;
 	}
 	.grid-container {
+		grid-template-columns: minmax(100px, 1fr);
 		grid-template-areas:
 			'header'
 			'star'
@@ -229,8 +236,9 @@ body {
 	}
 
 	.card-profile-container {
-		align-content: center;
-		flex-direction: column;
+		grid-template-columns: 1fr;
+		/* align-content: center;
+		flex-direction: column; */
 	}
 	.herosubheader {
 		font-size: 1.2rem;
